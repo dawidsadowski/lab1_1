@@ -1,6 +1,7 @@
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Product {
     private String id;
@@ -8,6 +9,23 @@ public class Product {
     private String name;
     private Date snapshotDate;
     private String type;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(snapshotDate, product.snapshotDate) &&
+                Objects.equals(type, product.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, price, name, snapshotDate, type);
+    }
 
     public Product(String id, Money price, String name, Date snapshotDate, String type) {
         this.id = id;
@@ -36,4 +54,6 @@ public class Product {
     public String getType() {
         return type;
     }
+
+
 }
