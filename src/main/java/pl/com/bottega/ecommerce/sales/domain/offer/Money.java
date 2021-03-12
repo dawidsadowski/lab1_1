@@ -30,4 +30,8 @@ public class Money {
     public Money subtract(Money money) {
         return new Money(currency, amount.subtract(money.getAmount()));
     }
+
+    int compareTo(Money money) {
+        return amount.compareTo(money.getAmount());
+    }
 }
